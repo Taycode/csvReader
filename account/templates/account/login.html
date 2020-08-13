@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}">
+    <script src="{% static 'account/toastData.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Register to Contact-App</title>
+</head>
+<body>
+<div class="container" >
+    <div class="container" id="loginDiv">
+        <h6 align="center"> Log in To Contact-App</h6>
+        {% if message %}
+            <div id="snackbar">{{message}}</div>
+            <script> toastData() </script>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" id="inputUsername" name="username" placeholder="What Do we call you?" value="{{ username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Don't worry, its a secret" value="{{ password }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

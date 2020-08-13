@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Register to Contact-App</title>
+</head>
+<body>
+<div class="container" >
+    <div class="container" id="registerDiv">
+        <h6 align="center"> Register To Contact-App</h6>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="inputFirstName">First name</label>
+                <input type="text" class="form-control" id="inputFirstName" name="first_name"  placeholder="What is on your birth-certificate?" required>
+            </div>
+            <div class="form-group">
+                <label for="inputLastName">Last name</label>
+                <input type="text" class="form-control" id="inputLastName" name="last_name"  placeholder="What do they call your family?" required>
+            </div>
+            <div class="form-group">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" id="inputUsername" name="username" placeholder="What do you want us to call you?" required>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Tell us your email sir" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

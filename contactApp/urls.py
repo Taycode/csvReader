@@ -15,8 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import redirect
+
+
+def redirect_to_contact(request):
+    """
+
+    :param request:
+    :return:
+    """
+    return redirect('contact:home')
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('account/', include(('account.urls' ,'account'), namespace='account'))
+    url('account/', include(('account.urls', 'account'), namespace='account')),
+    url('contact/', include(('contact.urls', 'contact'), namespace='contact')),
+    url('', redirect_to_contact)
 ]

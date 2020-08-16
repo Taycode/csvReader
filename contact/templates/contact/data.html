@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/renderjson@1.4.0/renderjson.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>
+    The Data is rendered below, please collapse to view more:
+</h4>
+<div id="json">
+</div>
+<script>
+    const fetchData = async () => {
+        let response = await fetch('http://localhost:8000/contact/{{ pk }}/')
+        let jsonData = await response.json();
+        document.getElementById("json").appendChild(
+        renderjson(jsonData)
+    );
+    }
+    fetchData()
+</script>
+
+</body>
+</html>

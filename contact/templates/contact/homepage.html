@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'contact/style.css' %}">
+    <title>Contact App</title>
+</head>
+<body>
+<div class="container-fluid" id="contactHomepageDiv">
+    <div id="contactHomepageCardDiv">
+
+        <form class="form-inline mb-5" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="form-group mb-2 mr-2">
+                <input type="text" class="form-control-input" id="tableName" name="tableName" placeholder="Table Name">
+            </div>
+            <div class="form-group mb-2">
+                <input type="file" class="form-control-file" id="contactFileUpload" name="csv_file">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="card">
+            <div class="card-header">
+            These are your Tables
+            </div>
+            {% if tables %}
+                {% for table in tables %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ table.name }}</h5>
+                        <a href="{% url 'contact:view_data' table.id %}" class="btn btn-primary">View Table</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                You have no tables
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

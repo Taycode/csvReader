@@ -1,5 +1,16 @@
 version: '3'
 services:
+  db:
+    image: postgres:10
+    hostname: db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
+#    volumes:
+#    - postgres_data:/var/lib/postgresql/data/
   contact_app:
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
@@ -8,3 +19,5 @@ services:
     - ./db.sqlite3:/contactApp/db.sqlite3
     ports:
     - "8000:8000"
+#    depends_on:
+#      - db

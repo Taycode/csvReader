@@ -20,7 +20,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 Then you clone this repo
 
 ```
-git clone https://github.com/Taycode/contact-app.git
+git clone https://github.com/Taycode/csvReader.git
 cd contact-app
 ```
 
